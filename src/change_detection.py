@@ -1,34 +1,32 @@
-import numpy as np
+import pandas as pd
 import ruptures as rpt
 
-def detect_structural_breaks(prices_series, penalty=10):
+def detect_structural_breaks(series: pd.Series, model: str = "l2", penalty: float = 10.0) -> list:
     """
-    Detects structural breaks in the mean and variance of a price series using 
-    the Binary Segmentation algorithm from the ruptures library.
+    Detects structural change points in a time series using Binary Segmentation.
     
     Parameters:
-    - prices_series (pd.Series): The pricing/returns series to analyze.
-    - penalty (int): Penalty value to prevent over-segmentation.
-    
+        series (pd.Series): Time series indexed by DatetimeIndex.
+        model (str): Ruptures cost model ('l2', 'l1', 'rbf').
+        penalty (float): Penalty coefficient governing penalty for adding breakpoints.
+        
     Returns:
-    - list: List of timestamps indicating change points.
+        list: List of pd.Timestamp objects corresponding to structural change dates.
     """
-    if len(prices_series) < 10:
-        raise ValueError("Time series data is too short to perform change point analysis.")
+    if len(series) < 10:
+        raise ValueError("Series length must be at least 10 observations for change detection.")
         
-    # Convert series to numpy array
-    signal = prices_series.values
+    signal = series.values.reshape(-1, 1)
+    algo = rpt.Binseg(model=model).fit(signal)
     
-    # Initialize Binary Segmentation model (using L2 norm for mean shifts)
-    algo = rpt.Binseg(model="l2").fit(signal)
+    # Predict breakpoint indices
+    breakpoint_indices = algo.predict(pen=penalty)
     
-    try:
-        # Predict change point indices
-        result_indices = algo.predict(pen=penalty)
+    # Map array indices back to DatetimeIndex
+    change_dates = []
+    for idx in breakpoint_indices[:-1]:  # Exclude the final length index
+        # Cap index at boundary
+        safe_idx = min(idx - 1, len(series) - 1)
+        change_dates.append(series.index[safe_idx])
         
-        # Map indices back to index dates (excluding the last end-of-series indicator)
-        change_dates = [prices_series.index[idx - 1] for idx in result_indices[:-1]]
-        return change_dates
-    except Exception as e:
-        print(f"Error during change point estimation: {str(e)}")
-        return []
+    return change_dates
