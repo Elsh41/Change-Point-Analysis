@@ -1,0 +1,15 @@
+[
+  {
+    "id": "cp_2014",
+    "date": "2014-11-26",
+    "event_name": "OPEC Non-Cut Decision",
+    "category": "OPEC Decision",
+    "pre_mean": 105.77,
+    "post_mean": 48.69,
+    "pct_change": -53.96,
+    "hdi_95": [
+      "2014-11-22",
+      "2014-11-28"
+    ]
+  }
+]

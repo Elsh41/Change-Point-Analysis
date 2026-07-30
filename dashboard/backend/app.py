@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests from React frontend
+CORS(app)
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
@@ -21,7 +21,6 @@ def health_check():
 
 @app.route("/api/prices", methods=["GET"])
 def get_prices():
-    """Returns historical prices with optional start_date and end_date filtering."""
     prices = load_json("brent_prices.json")
     start_date = request.args.get("start_date")
     end_date = request.args.get("end_date")
@@ -35,7 +34,6 @@ def get_prices():
 
 @app.route("/api/events", methods=["GET"])
 def get_events():
-    """Returns historical key market events."""
     events = load_json("oil_events.json")
     category = request.args.get("category")
     if category:
@@ -44,24 +42,22 @@ def get_events():
 
 @app.route("/api/changepoints", methods=["GET"])
 def get_change_points():
-    """Returns Bayesian change point detection results."""
     changepoints = load_json("change_points.json")
     return jsonify({"count": len(changepoints), "data": changepoints})
 
 @app.route("/api/metrics", methods=["GET"])
 def get_summary_metrics():
-    """Returns overall summary metrics for dashboard cards."""
     prices = load_json("brent_prices.json")
     if not prices:
         return jsonify({})
     
-    price_vals = [p["price"] for p in prices if p.get("price")]
+    price_vals = [p["price"] for p in prices if p.get("price") is not None]
     return jsonify({
         "total_records": len(prices),
-        "min_price": round(min(price_vals), 2),
-        "max_price": round(max(price_vals), 2),
-        "avg_price": round(sum(price_vals) / len(price_vals), 2),
-        "latest_price": price_vals[-1]
+        "min_price": round(min(price_vals), 2) if price_vals else 0,
+        "max_price": round(max(price_vals), 2) if price_vals else 0,
+        "avg_price": round(sum(price_vals) / len(price_vals), 2) if price_vals else 0,
+        "latest_price": price_vals[-1] if price_vals else 0
     })
 
 if __name__ == "__main__":

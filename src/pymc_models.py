@@ -29,3 +29,5 @@ def build_fast_switchpoint_model(data_series):
         likelihood = pm.Normal("obs", mu=mu, sigma=sigma, observed=obs_values)
         
     return model
+
+build_single_switchpoint_model = build_fast_switchpoint_model

@@ -1,0 +1,80 @@
+[
+  {
+    "Date": "1990-08-02",
+    "Event_Name": "Invasion of Kuwait",
+    "Category": "Geopolitical/War",
+    "Expected_Market_Impact": "Supply disruption fears; sharp price spike."
+  },
+  {
+    "Date": "2001-09-11",
+    "Event_Name": "9/11 Terrorist Attacks",
+    "Category": "Geopolitical/Security",
+    "Expected_Market_Impact": "Aviation and global demand crash; initial sharp price drop."
+  },
+  {
+    "Date": "2003-03-20",
+    "Event_Name": "US Invasion of Iraq",
+    "Category": "Geopolitical/War",
+    "Expected_Market_Impact": "Middle East supply disruptions; heightened price volatility."
+  },
+  {
+    "Date": "2008-09-15",
+    "Event_Name": "Lehman Brothers Bankruptcy",
+    "Category": "Economic Shock",
+    "Expected_Market_Impact": "Global financial crisis; severe global oil demand collapse."
+  },
+  {
+    "Date": "2011-02-15",
+    "Event_Name": "Libyan Civil War Begins",
+    "Category": "Geopolitical/Civil War",
+    "Expected_Market_Impact": "Light sweet crude supply loss; immediate price surge."
+  },
+  {
+    "Date": "2014-11-27",
+    "Event_Name": "OPEC Non-Cut Decision",
+    "Category": "OPEC Decision",
+    "Expected_Market_Impact": "OPEC defends market share against US shale; market supply glut and price crash."
+  },
+  {
+    "Date": "2018-11-05",
+    "Event_Name": "US Re-imposition of Iran Sanctions",
+    "Category": "Geopolitical/Sanctions",
+    "Expected_Market_Impact": "Iranian export restrictions; upward price pressure."
+  },
+  {
+    "Date": "2020-03-08",
+    "Event_Name": "Saudi-Russia Price War",
+    "Category": "OPEC/Market Share War",
+    "Expected_Market_Impact": "Production cut agreement collapse; drastic single-day price crash."
+  },
+  {
+    "Date": "2020-03-11",
+    "Event_Name": "WHO Declares COVID-19 Pandemic",
+    "Category": "Economic/Global Health",
+    "Expected_Market_Impact": "Global lockdowns; unprecedented demand destruction & negative futures pricing."
+  },
+  {
+    "Date": "2022-02-24",
+    "Event_Name": "Russia Invades Ukraine",
+    "Category": "Geopolitical/War",
+    "Expected_Market_Impact": "Western energy sanctions on Russia; multi-year price high spike."
+  },
+  {
+    "Date": "2023-10-07",
+    "Event_Name": "Israel-Hamas War Begins",
+    "Category": "Geopolitical/War",
+    "Expected_Market_Impact": "Regional escalation fears; short-term risk premium added."
+  },
+  {
+    "Date": "2024-01-12",
+    "Event_Name": "US/UK Red Sea Airstrikes",
+    "Category": "Geopolitical/Shipping",
+    "Expected_Market_Impact": "Houthi tanker attacks & rerouting; shipping delays and freight rate spikes."
+  },
+  {
+    "Date": "2026-01-01",
+    "Event_Name": "OPEC+ Supply Cut Extensions",
+    "Category": "OPEC Decision",
+    "Expected_Market_Impact": "Extended voluntary production cuts to maintain global floor price."
+  }
+]

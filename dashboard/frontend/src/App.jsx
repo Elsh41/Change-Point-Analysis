@@ -70,9 +70,11 @@ export default function App() {
             onChange={(e) => setSelectedEvent(events.find(ev => ev.Event_Name === e.target.value))}
             className="bg-gray-700 text-white px-3 py-1.5 rounded border border-gray-600 text-sm"
           >
-            <option value="">-- None --</option>
+            <option value="">-- Select Event to Overlay --</option>
             {events.map((ev, i) => (
-              <option key={i} value={ev.Event_Name}>{ev.Date} - {ev.Event_Name}</option>
+              <option key={i} value={ev.Event_Name}>
+              {ev.Date} - {ev.Event_Name}
+              </option>
             ))}
           </select>
         </div>
